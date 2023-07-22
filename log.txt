@@ -1,0 +1,4 @@
+# Timestamp: 2023-07-21 18:56:09 # Artikel: sonnenblume # Anzahl: 10 # Verantwortliche/r: Finja Bormann # Aktion: Kunde-Artikel-kaufen
+# Timestamp: 2023-07-21 18:56:09 # Artikel: wasserrose # Anzahl: 5 # Verantwortliche/r: Finja Bormann # Aktion: Kunde-Artikel-kaufen
+# Timestamp: 2023-07-21 19:00:51 # Artikel: rose # Anzahl: 100 # Verantwortliche/r: Finja Bormann # Aktion: Kunde-Artikel-kaufen
+# Timestamp: 2023-07-21 21:57:37 # Artikel: rose # Anzahl: 100 # Verantwortliche/r: Finja Bormann # Aktion: Kunde-Artikel-kaufen

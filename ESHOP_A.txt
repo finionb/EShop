@@ -1,0 +1,5 @@
+rose # 1 # 1.99 # 500 # t # f
+lilie # 2 # 1.99 # 30 # t # t # 2
+tulpe # 3 # 2.99 # 0 # f # f
+wasserrose # 4 # 5.99 # 15 # t # t # 5
+sonnenblume # 6 # 3.99 # 40 # t # f
