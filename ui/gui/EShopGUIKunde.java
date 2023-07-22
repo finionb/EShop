@@ -128,6 +128,7 @@ public class EShopGUIKunde extends JFrame
 		tabbedPane.addTab("Anzahl erhöhen", increasePanel);
 		tabbedPane.addTab("Anzahl verringern", decreasePanel);
 
+		// Center: Artikel Panel
 		java.util.List<Artikel> artikel = eshop.gibAlleArtikel();
 		artikelPanel = new ArtikelTablePanel(artikel);
 		JScrollPane scrollPane = new JScrollPane(artikelPanel);

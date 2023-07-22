@@ -7,7 +7,6 @@ import entities.Artikel;
 // import entities.Mitarbeiter;
 
 /**
- * @author teschke
  *
  * Allgemeine Schnittstelle für den Zugriff auf ein Speichermedium
  * (z.B. Datei oder Datenbank) zum Ablegen von beispielsweise
@@ -34,7 +33,7 @@ public interface PersistenceManager {
     /**
      * Methode zum Schreiben der Artikeldaten in eine externe Datenquelle.
      *
-     * @param b Artikel-Objekt, das gespeichert werden soll
+     * @param a Artikel-Objekt, das gespeichert werden soll
      * @return true, wenn Schreibvorgang erfolgreich, false sonst
      */
     public boolean speichereArtikel(Artikel a) throws IOException;
