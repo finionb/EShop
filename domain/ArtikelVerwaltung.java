@@ -6,7 +6,6 @@ import java.util.List;
 
 import domain.exceptions.*;
 import persistence.FilePersistenceManager;
-import persistence.PersistenceManager;
 import entities.Artikel;
 import entities.Massengutartikel;
 
@@ -16,7 +15,7 @@ public class ArtikelVerwaltung {
     private List<Artikel> artikelBestand = new ArrayList<>();
     // Persistenz-Schnittstelle, die für die Details des Dateizugriffs
     // verantwortlich ist
-    private PersistenceManager pm = new FilePersistenceManager();
+    private FilePersistenceManager pm = new FilePersistenceManager();
 
     /**
      * Methode zum Einlesen von Artikeldaten aus einer Datei.

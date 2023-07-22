@@ -254,10 +254,11 @@ public class EShopClientCUI {
         System.out.println("7. Mitarbeiter hinzufügen");
         System.out.println("8. Account löschen");
         System.out.println("9. Daten sichern");
-        System.out.println("10. Abmelden");
-        System.out.println("11. Beenden");
+        System.out.println("10. Lagererignisse");
+        System.out.println("11. Abmelden");
+        System.out.println("12. Beenden");
         System.out.println("---------------------------------------------");
-        System.out.println("Bitte geben Sie die jeweilige Zahl ein [1-10]:");
+        System.out.println("Bitte geben Sie die jeweilige Zahl ein [1-12]:");
         System.out.print("> "); // Prompt
         System.out.flush(); // ohne NL ausgeben
     }
@@ -414,12 +415,16 @@ public class EShopClientCUI {
                 case 9: // Daten sichern
                     eshop.schreibeArtikel();
                     break;
-                case 10:
+                case 10: //Lagerereignisse anzeigen
+                    System.out.println("Lagereignisse: ");
+                    eshop.printTable();
+                    break;
+                case 11:
                     eingeloggterMitarbeiter = null;
                     System.out.println("Erfolgreich ausgeloggt.");
                     logInMitarbeiter();
                     break;
-                case 11:
+                case 12:
                     System.out.println("Wir wünschen Ihnen noch einen schönen Tag!");
                     break;
                 default:

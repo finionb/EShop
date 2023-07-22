@@ -8,7 +8,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +28,7 @@ import entities.Mitarbeiter;
  * 
  * @see bib.local.persistence.PersistenceManager
  */
-public class FilePersistenceManager implements PersistenceManager {
+public class FilePersistenceManager {
 
     private static final String KUNDEN_DATEI = "kunden_data.txt";
     private static final String MITARBEITER_DATEI = "mitarbeiter_data.txt";
@@ -57,6 +56,23 @@ public class FilePersistenceManager implements PersistenceManager {
         writer.write("# Timestamp: " + timestamp + " # Artikel: " + artikel + " # Anzahl: " + anzahl
                 + " # Verantwortliche/r: " + person + " # Aktion: " + action + "\n");
         writer.close();
+    }
+
+    public void generateTableFromProtocol() {
+        List<String[]> data = readDataFromFile("log.txt");
+        // Header
+        System.out.printf("%-12s%-20s%-20s%-20s\n", "Timestamp", "Artikel", "Verantwortliche/r", "Aktion");
+
+        // Trennlinie
+        for (int i = 0; i < 74; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
+
+        // Daten
+        for (String[] row : data) {
+            System.out.printf("%-12s%-20s%-20s%-20s\n", row[0], row[1], row[2], row[3]);
+        }
     }
 
     private BufferedReader reader = null;
@@ -317,33 +333,38 @@ public class FilePersistenceManager implements PersistenceManager {
         return benutzernamenListe;
     }
 
-    /* 
-    public void ladeEreignisse(String dateiName) throws IOException, ParseException {
-        try (BufferedReader br = new BufferedReader(new FileReader(dateiName))) {
+    private static List<String[]> readDataFromFile(String filename) {
+        List<String[]> dataList = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
             while ((line = br.readLine()) != null) {
-                if (line.startsWith("# Timestamp:")) {
-                    Date timestamp = (Date) dateFormat.parse(line.substring(13).trim());
+                String artikel = "";
+                String verantwortliche = "";
+                String aktion = "";
+                String timestamp = "";
 
-                    line = br.readLine(); // Read next line for Artikel
-                    String artikel = line.substring(10).trim();
-
-                    line = br.readLine(); // Read next line for Anzahl
-                    int anzahl = Integer.parseInt(line.substring(9).trim());
-
-                    line = br.readLine(); // Read next line for Verantwortlicher
-                    String verantwortlicher = line.substring(18).trim();
-
-                    line = br.readLine(); // Read next line for Aktion
-                    String aktion = line.substring(9).trim();
-
-                    Ereignis ereignis = new Ereignis(timestamp, artikel, anzahl, verantwortlicher, aktion);
-                    addEreignis(ereignis);
+                String[] elements = line.split(" # ");
+                for (String element : elements) {
+                    if (element.startsWith("Timestamp:")) {
+                        timestamp = element.split(": ")[1]; // Nur das Datum extrahieren
+                    } else if (element.startsWith("Artikel:")) {
+                        artikel = element.split(": ")[1];
+                    } else if (element.startsWith("Verantwortliche/r:")) {
+                        verantwortliche = element.split(": ")[1];
+                    } else if (element.startsWith("Aktion:")) {
+                        aktion = element.split(": ")[1];
+                    }
                 }
+
+                dataList.add(new String[]{timestamp, artikel, verantwortliche, aktion});
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } */
+
+        return dataList;
+    }
     
+
 }

@@ -15,12 +15,6 @@ public class KundenVerwaltung {
     FilePersistenceManager file = new FilePersistenceManager();
     public List<Kunde> kundenListe = new ArrayList<>();
     public List<String> BenutzernameListe = new ArrayList<>();
-    private Kunde kunde;
-
-    // Konstruktor
-    public KundenVerwaltung() {
-
-    }
 
     public int nummerBestimmen() throws NummerListeException, NummerNichtGespeichert {
         int kundenNr = file.nextnr();
@@ -36,11 +30,6 @@ public class KundenVerwaltung {
         file.speichereKundenData(kunde);
         return kunde;
     }
-
-    // Getter und Setter
-    // public List<Kunde> getKundenListe() {
-    // return kundenListe;
-    // }
 
     public void ladeAlleKunden() throws DatenNichtGeladen {
         kundenListe = file.ladeAlleKunden();

@@ -23,6 +23,10 @@ public class EShop {
     HashMap<Artikel, Integer> artikelMap;
     DecimalFormat df;
 
+        // Persistenz-Schnittstelle, die für die Details des Dateizugriffs
+    // verantwortlich ist
+    private FilePersistenceManager pm = new FilePersistenceManager();
+
     /**
      * Konstruktor, der die Basisdaten aus Dateien einliest
      * (Initialisierung des EShops).
@@ -271,6 +275,10 @@ public class EShop {
         Rechnung rechnung = new Rechnung(eshop, kunde, warenkorb);
         String ausgabe = rechnung.erstelleRechnung(kunde);
         return ausgabe;
+    }
+
+    public void printTable() {
+        pm.generateTableFromProtocol();
     }
 
     /* ***************** LOGIN *************************** */

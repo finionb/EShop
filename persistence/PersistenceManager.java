@@ -16,6 +16,11 @@ import entities.Artikel;
  * Das Interface muss von Klassen implementiert werden, die eine
  * Persistenz-Schnittstelle realisieren wollen.
  */
+
+
+
+//Veraltet -> Alle Methoden aus FilePersistenceManager müssen hier vernünftig definiert werden.
+//sonst ist es unnötig ein Interface zu erstellen, es wäre aber besser und schöner. Nicht einfach COPY PASTA machen!
 public interface PersistenceManager {
 
     public void openForReading(String datenquelle) throws IOException;
