@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 //import domain.exceptions.*;
 
 import java.util.*;
-
+//Test Kommi
 public class Warenkorb {
 
     DecimalFormat df = new DecimalFormat("0.00");
